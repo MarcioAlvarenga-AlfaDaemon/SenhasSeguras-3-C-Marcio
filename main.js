@@ -1,9 +1,9 @@
-const numeroSenha = document.querySelector('.parametro-senha_texto');
+const numeroSenha = document.querySelector(".parametro-senha__texto");
 
 let tamanhoSenha = 12;
 numeroSenha.textContent = tamanhoSenha;
 
-const botoes = document.querySelectorAll('.parametro-senha_botao');
+const botoes = document.querySelectorAll(".parametro-senha__botao");
 
 botoes[0].onclick = diminuiTamanho;
 botoes[1].onclick = aumentaTamanho;
@@ -25,3 +25,21 @@ function aumentaTamanho() {
     numeroSenha.textContent = tamanhoSenha;
     geraSenha();
 }
+
+function geraSenha() {
+    const campoSenha = document.querySelector("#campo-senha");
+
+    const caracteres = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%&*";
+
+    let senha = "";
+
+    for (let i = 0; i < tamanhoSenha; i++) {
+        const indice = Math.floor(Math.random() * caracteres.length);
+        senha += caracteres[indice];
+    }
+
+    campoSenha.value = senha;
+}
+
+// Gera uma senha ao carregar a página
+geraSenha();
